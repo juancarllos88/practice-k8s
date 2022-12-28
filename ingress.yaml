@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  labels:
+    name: api-ingress
+spec:
+  rules:
+  - host: "minhaapi.info"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/ola"
+        backend:
+          service:
+            name: "api-pod-svc"
+            port: 
+              number: 80
+  - host: "minhaapi.info.192.168.49.2.nip.io"
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: "api-pod-svc"
+            port: 
+              number: 80             
