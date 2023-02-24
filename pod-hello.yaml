@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-hello
+  labels:
+    name: pod-hello
+spec:
+  containers:
+  - name: pod-hello
+    image: khaosdoctor/configmap-node-api
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8084
+        name: "port-pod-hello"
+    env:
+      - name: "PORT"
+        value: "8084"
+      - name: "HELLO_PERSON"
+        valueFrom:
+          configMapKeyRef:
+            key: "person.name"
+            name: "config-map"

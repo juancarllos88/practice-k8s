@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-map
+  labels:
+    app: config-map
+data:
+  dir: "diretório"
+  app: "condiguracao"
+  person.name: "Santos"
+  carro: "ferrari"
